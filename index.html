@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16392a">
+  <meta name="description" content="Lagoa Limpa conecta moradores, coleta seletiva e reciclagem para cuidar da Lagoa de São Francisco, no Piauí.">
+  <title>Lagoa Limpa — Uma atitude muda tudo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #16392a;
+      --forest-2: #214d38;
+      --leaf: #367b4d;
+      --lime: #c7ef77;
+      --lime-2: #a8d65e;
+      --cream: #f7f8f2;
+      --paper: #ffffff;
+      --mist: #eaf0e5;
+      --mint: #dcebd5;
+      --ink: #1c3026;
+      --muted: #69776d;
+      --line: #e0e7dc;
+      --amber: #f0cb72;
+      --danger: #ba4a3a;
+      --radius: 22px;
+      --shadow: 0 22px 60px rgba(22, 57, 42, .10);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body, button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    button, input, select, textarea { font-size: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; }
+    img, svg { display: block; max-width: 100%; }
+    svg.icon { width: 20px; height: 20px; flex: 0 0 auto; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .section { padding: 100px 0; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border: 1px solid #dce8cf; border-radius: 999px; color: var(--leaf); background: #f0f6e8; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow-dot { width: 7px; height: 7px; background: var(--lime-2); border-radius: 50%; box-shadow: 0 0 0 4px rgba(168,214,94,.2); }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -.045em; }
+    h1 { font-size: clamp(42px, 5.1vw, 68px); line-height: 1.06; font-weight: 800; }
+    h2 { font-size: clamp(32px, 3.7vw, 48px); line-height: 1.13; font-weight: 800; }
+    h3 { font-size: 21px; line-height: 1.25; }
+    .section-heading { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+    .section-heading h2 { margin: 18px 0 14px; }
+    .section-heading p { color: var(--muted); font-size: 17px; max-width: 630px; margin: 0 auto; }
+    .text-lime { color: var(--lime); }
+    .muted { color: var(--muted); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 48px; padding: 13px 20px; border: 1px solid transparent; border-radius: 13px; font-weight: 700; font-size: 14px; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--lime); color: var(--forest); box-shadow: 0 8px 20px rgba(199,239,119,.18); }
+    .btn-primary:hover { background: #d6f99a; box-shadow: 0 11px 24px rgba(199,239,119,.24); }
+    .btn-dark { background: var(--forest); color: white; }
+    .btn-dark:hover { background: var(--forest-2); }
+    .btn-outline { border-color: rgba(255,255,255,.32); color: white; background: rgba(255,255,255,.06); }
+    .btn-outline:hover { background: rgba(255,255,255,.13); }
+    .btn-light { background: white; border-color: var(--line); color: var(--forest); }
+    .btn-light:hover { background: #f1f6e8; }
+    :focus-visible { outline: 3px solid #8bad44; outline-offset: 3px; }
+
+    /* Header */
+    .site-header { position: sticky; inset: 0 0 auto; z-index: 100; background: rgba(247,248,242,.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(224,231,220,.8); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -.05em; color: var(--forest); white-space: nowrap; }
+    .brand-mark { width: 40px; height: 40px; border-radius: 14px; display: grid; place-items: center; color: var(--forest); background: var(--lime); }
+    .brand-mark .icon { width: 23px; height: 23px; }
+    .brand small { display: block; font-family: 'DM Sans', sans-serif; font-weight: 600; color: #748274; font-size: 9px; letter-spacing: .13em; margin-top: -3px; }
+    .nav-links { display: flex; align-items: center; gap: 27px; color: #47584c; font-size: 13px; font-weight: 700; }
+    .nav-links a:not(.btn):hover { color: var(--leaf); }
+    .nav-links .btn { min-height: 43px; padding: 10px 15px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; color: var(--forest); width: 44px; height: 44px; border-radius: 12px; place-items: center; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding: 76px 0 88px; color: white; background: var(--forest); isolation: isolate; }
+    .hero::before { content: ''; position: absolute; z-index: -1; width: 650px; height: 650px; border-radius: 50%; right: -200px; top: -300px; background: radial-gradient(circle, rgba(168,214,94,.22), rgba(168,214,94,0) 68%); }
+    .hero::after { content: ''; position: absolute; z-index: -1; width: 540px; height: 540px; border-radius: 50%; left: -290px; bottom: -370px; border: 1px solid rgba(199,239,119,.16); box-shadow: 0 0 0 50px rgba(199,239,119,.025), 0 0 0 100px rgba(199,239,119,.02); }
+    .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 52px; }
+    .hero .eyebrow { background: rgba(199,239,119,.09); border-color: rgba(199,239,119,.24); color: #def5b2; }
+    .hero h1 { margin: 22px 0 20px; max-width: 650px; }
+    .hero-copy > p { max-width: 570px; color: rgba(255,255,255,.72); font-size: 18px; line-height: 1.75; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 30px; color: rgba(255,255,255,.62); font-size: 12px; }
+    .avatar-stack { display: flex; padding-left: 4px; }
+    .avatar-stack span { width: 27px; height: 27px; border-radius: 50%; display: grid; place-items: center; margin-left: -4px; border: 2px solid var(--forest); color: var(--forest); background: var(--lime); font-size: 9px; font-weight: 800; }
+    .hero-visual { position: relative; min-height: 470px; display: grid; align-items: center; }
+    .landscape { position: absolute; inset: 26px -10px 22px 15px; border-radius: 35px; overflow: hidden; background: linear-gradient(155deg, #dcebbf 0%, #a6d88b 35%, #629e70 61%, #2e6b54 100%); }
+    .landscape::before { content: ''; position: absolute; inset: 0; opacity: .32; background-image: radial-gradient(rgba(255,255,255,.75) .8px, transparent .8px); background-size: 19px 19px; mask-image: linear-gradient(to bottom, black, transparent 75%); }
+    .sun { position: absolute; width: 90px; height: 90px; border-radius: 50%; right: 17%; top: 13%; background: #f8e7a2; box-shadow: 0 0 0 20px rgba(248,231,162,.14), 0 0 80px rgba(248,231,162,.6); }
+    .hill { position: absolute; left: -8%; right: -8%; border-radius: 50% 50% 0 0; }
+    .hill-one { height: 56%; bottom: 22%; background: #7bb47b; transform: rotate(-6deg); }
+    .hill-two { height: 49%; bottom: 8%; left: 22%; background: #3c805e; transform: rotate(7deg); }
+    .water { position: absolute; height: 38%; bottom: -4%; left: -6%; right: -6%; border-radius: 48% 48% 0 0; background: linear-gradient(180deg,#5dbaa6,#267c69); transform: rotate(-2deg); }
+    .water-lines { position: absolute; inset: auto 8% 8% 15%; height: 18%; opacity: .45; background: repeating-linear-gradient(0deg, transparent 0 12px, rgba(255,255,255,.65) 13px 14px, transparent 15px 24px); border-radius: 50%; transform: rotate(-4deg); }
+    .tree { position: absolute; bottom: 24%; width: 10px; height: 80px; border-radius: 5px; background: #365c43; transform-origin: bottom; }
+    .tree::before, .tree::after { content: ''; position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); border-radius: 48% 52% 45% 55%; background: #285b43; }
+    .tree::before { width: 62px; height: 72px; }
+    .tree::after { width: 48px; height: 55px; bottom: 69px; background: #3d7852; }
+    .tree-a { left: 10%; transform: scale(.8); }
+    .tree-b { right: 13%; bottom: 30%; transform: scale(1.1); }
+    .floating-card { position: absolute; display: flex; align-items: center; gap: 12px; padding: 15px 17px; border: 1px solid rgba(255,255,255,.72); background: rgba(255,255,255,.94); color: var(--ink); box-shadow: 0 17px 40px rgba(20,50,35,.18); border-radius: 17px; }
+    .floating-card .float-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: #eff7df; color: var(--leaf); }
+    .floating-card strong { display: block; font-family: 'Manrope',sans-serif; font-size: 18px; letter-spacing: -.04em; }
+    .floating-card small { display: block; color: var(--muted); font-size: 11px; }
+    .float-impact { left: -16px; bottom: 42px; }
+    .float-point { top: 44px; right: -18px; }
+    .hero-caption { position: absolute; left: 36px; bottom: 32px; color: white; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-shadow: 0 1px 6px rgba(0,0,0,.25); }
+
+    /* Trust strip */
+    .trust-strip { border-bottom: 1px solid var(--line); background: white; }
+    .trust-items { display: grid; grid-template-columns: repeat(4,1fr); }
+    .trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 24px 15px; border-right: 1px solid var(--line); }
+    .trust-item:last-child { border-right: 0; }
+    .trust-item .icon-wrap { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 11px; color: var(--leaf); background: #edf4e5; }
+    .trust-item strong { display: block; font-size: 13px; }
+    .trust-item small { display: block; font-size: 11px; color: var(--muted); }
+
+    /* Problem and solution */
+    .split-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 42px; }
+    .split-heading > div:first-child { max-width: 650px; }
+    .split-heading h2 { margin: 17px 0 0; }
+    .split-heading > p { max-width: 345px; color: var(--muted); margin: 0 0 4px; }
+    .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .problem-card { min-height: 250px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: white; transition: border-color .2s, transform .2s, box-shadow .2s; }
+    .problem-card:hover { transform: translateY(-4px); border-color: #c8d8bd; box-shadow: var(--shadow); }
+    .problem-card .icon-wrap { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 35px; border-radius: 15px; color: var(--leaf); background: #edf5e5; }
+    .problem-card:nth-child(2) .icon-wrap { background: #fbf0d5; color: #907022; }
+    .problem-card:nth-child(3) .icon-wrap { background: #e2f0e8; color: #397e64; }
+    .problem-card h3 { margin-bottom: 10px; font-size: 20px; }
+    .problem-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    .solution { color: white; background: var(--forest); overflow: hidden; position: relative; }
+    .solution::after { content: ''; position: absolute; width: 400px; height: 400px; border: 1px solid rgba(199,239,119,.16); border-radius: 50%; right: -160px; top: -180px; box-shadow: 0 0 0 40px rgba(199,239,119,.025), 0 0 0 80px rgba(199,239,119,.02); }
+    .solution .section-heading { position: relative; z-index: 1; }
+    .solution .section-heading p { color: rgba(255,255,255,.65); }
+    .solution .eyebrow { background: rgba(199,239,119,.08); border-color: rgba(199,239,119,.2); color: #d8f4a9; }
+    .solution-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; position: relative; z-index: 1; }
+    .solution-card { min-height: 235px; padding: 25px 22px; border: 1px solid rgba(255,255,255,.13); border-radius: 20px; background: rgba(255,255,255,.055); }
+    .solution-card .number { display: flex; align-items: center; justify-content: space-between; color: var(--lime); font-family: 'Manrope',sans-serif; font-size: 12px; font-weight: 800; margin-bottom: 30px; }
+    .solution-card .number .icon { width: 22px; height: 22px; }
+    .solution-card h3 { font-size: 19px; margin-bottom: 10px; }
+    .solution-card p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.65); margin: 0; }
+
+    /* App demo */
+    .demo-section { background: #edf2e8; overflow: hidden; }
+    .demo-top { display: grid; grid-template-columns: .8fr 1.2fr; align-items: end; gap: 44px; margin-bottom: 38px; }
+    .demo-top h2 { margin: 17px 0 12px; }
+    .demo-top p { color: var(--muted); margin: 0; max-width: 510px; }
+    .demo-callout { display: flex; align-items: center; gap: 12px; max-width: 385px; justify-self: end; padding: 15px 18px; border: 1px solid #dbe5d2; border-radius: 15px; background: rgba(255,255,255,.62); font-size: 12px; color: #536456; }
+    .demo-callout .icon { color: var(--leaf); }
+    .demo-window { overflow: hidden; border: 1px solid #d5dfd0; border-radius: 23px; background: white; box-shadow: 0 28px 70px rgba(29,64,43,.12); }
+    .window-chrome { height: 43px; display: flex; align-items: center; gap: 7px; padding: 0 17px; background: #fbfcf9; border-bottom: 1px solid #edf0e9; }
+    .chrome-dot { width: 8px; height: 8px; border-radius: 50%; background: #d7ded3; }
+    .chrome-label { margin-left: 10px; color: #829083; font-size: 10px; font-weight: 700; letter-spacing: .04em; }
+    .app-layout { min-height: 550px; display: grid; grid-template-columns: 205px 1fr; }
+    .app-sidebar { padding: 22px 14px; color: white; background: var(--forest); }
+    .app-brand { display: flex; align-items: center; gap: 9px; padding: 2px 7px 25px; font-family: 'Manrope',sans-serif; font-size: 13px; font-weight: 800; }
+    .app-brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--lime); color: var(--forest); }
+    .app-brand-mark .icon { width: 17px; height: 17px; }
+    .side-label { color: rgba(255,255,255,.42); font-size: 9px; font-weight: 700; letter-spacing: .13em; padding: 0 9px; margin: 5px 0 10px; text-transform: uppercase; }
+    .app-nav { display: grid; gap: 5px; }
+    .app-nav-btn { display: flex; align-items: center; gap: 11px; width: 100%; padding: 11px 10px; border: 0; border-radius: 10px; color: rgba(255,255,255,.7); background: transparent; text-align: left; font-size: 12px; font-weight: 600; transition: background .15s,color .15s; }
+    .app-nav-btn .icon { width: 17px; height: 17px; }
+    .app-nav-btn:hover { background: rgba(255,255,255,.09); color: white; }
+    .app-nav-btn[aria-current="page"] { background: rgba(199,239,119,.15); color: var(--lime); }
+    .sidebar-bottom { margin-top: 52px; padding: 15px 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 13px; background: rgba(255,255,255,.04); }
+    .sidebar-bottom strong { display: block; font-size: 11px; margin-bottom: 4px; }
+    .sidebar-bottom p { margin: 0; font-size: 10px; line-height: 1.5; color: rgba(255,255,255,.56); }
+    .app-main { min-width: 0; padding: 25px 28px 30px; background: #fbfcf9; }
+    .app-topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .app-breadcrumb { font-size: 10px; color: #879285; margin-bottom: 3px; }
+    .app-page-title { font-family: 'Manrope',sans-serif; font-size: 21px; font-weight: 800; letter-spacing: -.045em; margin: 0; }
+    .demo-mode { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; background: #edf5df; color: #49743b; font-size: 10px; font-weight: 800; white-space: nowrap; }
+    .demo-mode::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7eb84f; }
+    .demo-content { min-height: 415px; }
+    .welcome-row { display: flex; align-items: start; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+    .welcome-row h3 { margin: 0 0 4px; font-size: 17px; }
+    .welcome-row p { margin: 0; font-size: 11px; color: #829083; }
+    .small-btn { min-height: 36px; padding: 8px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 9px; background: var(--forest); color: white; font-size: 11px; font-weight: 700; }
+    .small-btn .icon { width: 15px; height: 15px; }
+    .small-btn:hover { background: var(--forest-2); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+    .stat-card { padding: 15px 16px; border: 1px solid #e6ebe2; border-radius: 14px; background: white; }
+    .stat-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: #7f8d80; font-size: 10px; font-weight: 600; margin-bottom: 11px; }
+    .stat-label .icon { width: 16px; height: 16px; color: #559062; }
+    .stat-value { font-family: 'Manrope',sans-serif; font-size: 25px; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+    .stat-note { font-size: 9px; color: #68945d; margin-top: 7px; }
+    .demo-columns { display: grid; grid-template-columns: 1.18fr .82fr; gap: 13px; }
+    .panel { border: 1px solid #e6ebe2; border-radius: 15px; background: white; padding: 17px; min-width: 0; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 15px; }
+    .panel-head h4 { margin: 0; font-family: 'Manrope',sans-serif; font-size: 12px; font-weight: 800; letter-spacing: -.02em; }
+    .text-link { border: 0; padding: 3px; color: #518259; background: transparent; font-size: 10px; font-weight: 800; }
+    .activity-list { display: grid; gap: 14px; }
+    .activity-item { display: flex; align-items: center; gap: 10px; }
+    .activity-icon { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 10px; background: #eef5e5; color: #4e8b5b; }
+    .activity-icon .icon { width: 17px; height: 17px; }
+    .activity-text { min-width: 0; flex: 1; }
+    .activity-text strong { display: block; font-size: 10px; line-height: 1.4; }
+    .activity-text small { display: block; margin-top: 2px; font-size: 9px; color: #8b978c; }
+    .status { padding: 4px 7px; border-radius: 999px; background: #edf6e7; color: #58884c; font-size: 8px; font-weight: 800; white-space: nowrap; }
+    .campaign-art { position: relative; min-height: 100px; overflow: hidden; margin-bottom: 13px; border-radius: 12px; background: linear-gradient(135deg,#d9eabb,#5a9a6d); }
+    .campaign-art::before, .campaign-art::after { content: ''; position: absolute; bottom: -32px; width: 160px; height: 120px; border-radius: 50% 50% 0 0; background: #4c875e; }
+    .campaign-art::before { left: -20px; transform: rotate(-10deg); }
+    .campaign-art::after { right: -10px; bottom: -48px; background: #2d7157; transform: rotate(10deg); }
+    .campaign-sun { position: absolute; right: 23px; top: 17px; width: 28px; height: 28px; background: #ffedaf; border-radius: 50%; box-shadow: 0 0 0 8px rgba(255,237,175,.2); }
+    .campaign-detail h4 { font-family: 'Manrope',sans-serif; font-size: 12px; margin: 0 0 6px; }
+    .campaign-detail p { color: #7c897d; font-size: 10px; line-height: 1.5; margin: 0 0 12px; }
+    .progress-track { height: 6px; overflow: hidden; border-radius: 99px; background: #e9eee4; }
+    .progress-track span { display: block; height: 100%; width: 68%; border-radius: inherit; background: #78ae5f; }
+    .progress-label { display: flex; justify-content: space-between; gap: 8px; margin-top: 7px; font-size: 9px; color: #849084; }
+    .map-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-bottom: 14px; }
+    .filter-chip { min-height: 33px; padding: 7px 11px; border: 1px solid #e2e9dd; border-radius: 999px; background: white; color: #6d7b6e; font-size: 10px; font-weight: 700; }
+    .filter-chip[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: white; }
+    .map-layout { display: grid; grid-template-columns: 1.25fr .75fr; gap: 13px; }
+    .mini-map { position: relative; min-height: 300px; overflow: hidden; border: 1px solid #dce7d4; border-radius: 14px; background: #e7efde; }
+    .mini-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .map-label { position: absolute; font-size: 9px; font-weight: 800; color: #55765b; background: rgba(255,255,255,.78); padding: 4px 7px; border-radius: 6px; }
+    .map-label.one { top: 14%; left: 8%; }
+    .map-label.two { bottom: 17%; right: 8%; }
+    .map-pin { position: absolute; display: grid; place-items: center; width: 28px; height: 28px; border: 3px solid white; border-radius: 50% 50% 50% 5px; background: #4e9661; color: white; box-shadow: 0 4px 11px rgba(31,73,45,.22); transform: rotate(-45deg); }
+    .map-pin .icon { width: 12px; height: 12px; transform: rotate(45deg); }
+    .map-pin.p1 { left: 38%; top: 27%; }
+    .map-pin.p2 { left: 65%; top: 54%; background: #d0a33c; }
+    .map-pin.p3 { left: 22%; top: 67%; }
+    .point-list { display: grid; align-content: start; gap: 9px; }
+    .point-card { padding: 12px; border: 1px solid #e5ebe0; border-radius: 12px; background: white; }
+    .point-card strong { display: block; font-size: 10px; margin-bottom: 4px; }
+    .point-card p { font-size: 9px; color: #7e8a7d; margin: 0 0 7px; }
+    .point-type { color: #5c8d50; font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 11px; color: #526255; font-weight: 800; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid #dce5d8; background: white; color: var(--ink); border-radius: 10px; padding: 11px 12px; min-height: 42px; outline: none; font-size: 12px; }
+    .field textarea { resize: vertical; min-height: 94px; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #75a663; box-shadow: 0 0 0 3px rgba(117,166,99,.13); }
+    .form-note { margin: 12px 0 0; color: #8a9588; font-size: 10px; }
+    .report-success { display: none; padding: 25px; border: 1px solid #d6e7ce; border-radius: 15px; background: #f1f8e9; color: #3d6e3e; }
+    .report-success.show { display: block; }
+    .report-success .icon { width: 28px; height: 28px; margin-bottom: 10px; }
+    .report-success strong { display: block; font-family: 'Manrope',sans-serif; margin-bottom: 5px; }
+    .report-success p { margin: 0; font-size: 12px; }
+    .impact-top { display: grid; grid-template-columns: .95fr 1.05fr; gap: 14px; margin-bottom: 15px; }
+    .impact-hero-card { padding: 24px; border-radius: 16px; color: white; background: var(--forest); }
+    .impact-hero-card .stat-label { color: rgba(255,255,255,.62); }
+    .impact-hero-card .stat-value { font-size: 38px; }
+    .impact-hero-card .stat-note { color: var(--lime); font-size: 10px; }
+    .impact-bars { display: grid; gap: 16px; }
+    .bar-row { display: grid; grid-template-columns: 66px 1fr 42px; align-items: center; gap: 9px; font-size: 10px; }
+    .bar-row > span:first-child { color: #748174; }
+    .bar-track { height: 8px; border-radius: 99px; background: #edf1e9; overflow: hidden; }
+    .bar-track span { display: block; height: 100%; border-radius: inherit; background: #7eaf64; }
+    .bar-row strong { text-align: right; font-size: 10px; }
+    .demo-disclaimer { padding: 13px 16px; display: flex; align-items: center; gap: 9px; color: #829083; font-size: 10px; background: #f8faf5; border-top: 1px solid #edf0e9; }
+    .demo-disclaimer .icon { width: 15px; height: 15px; }
+
+    /* Steps / model / CTA */
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; counter-reset: step; }
+    .step-card { padding: 24px; border-top: 2px solid #d7e5cb; position: relative; }
+    .step-no { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 12px; background: var(--lime); color: var(--forest); font-family: 'Manrope',sans-serif; font-size: 12px; font-weight: 800; margin-bottom: 23px; }
+    .step-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .step-card p { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 0; }
+    .business-section { background: #f0f4eb; }
+    .business-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .business-card { display: flex; align-items: start; gap: 17px; padding: 25px; border: 1px solid #dce6d7; border-radius: 18px; background: rgba(255,255,255,.72); }
+    .business-card .icon-wrap { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 auto; border-radius: 14px; background: var(--forest); color: var(--lime); }
+    .business-card h3 { margin: 0 0 8px; font-size: 18px; }
+    .business-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .impact-band { color: white; background: #214d38; }
+    .impact-band-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+    .impact-band h2 { margin: 17px 0 15px; }
+    .impact-band p { color: rgba(255,255,255,.68); max-width: 475px; }
+    .impact-band .eyebrow { background: rgba(199,239,119,.08); border-color: rgba(199,239,119,.2); color: #d8f4a9; }
+    .impact-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .impact-item { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid rgba(255,255,255,.13); border-radius: 14px; background: rgba(255,255,255,.045); font-size: 13px; font-weight: 700; }
+    .impact-item .icon { color: var(--lime); }
+
+    .contact-section { background: white; }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 65px; align-items: start; }
+    .contact-copy h2 { margin: 18px 0 16px; }
+    .contact-copy > p { color: var(--muted); font-size: 16px; }
+    .contact-detail { display: flex; gap: 12px; align-items: start; margin-top: 26px; color: #607263; font-size: 13px; }
+    .contact-detail .icon { color: var(--leaf); margin-top: 2px; }
+    .contact-form { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: #fbfcf9; }
+    .contact-form h3 { margin-bottom: 5px; font-size: 22px; }
+    .contact-form > p { color: var(--muted); font-size: 12px; margin-bottom: 22px; }
+    .contact-form .form-grid { gap: 13px; }
+    .contact-form .field label { font-size: 12px; }
+    .contact-form .field input, .contact-form .field select, .contact-form .field textarea { min-height: 46px; font-size: 13px; padding: 12px 13px; border-color: #dfe6db; }
+    .contact-form .field textarea { min-height: 88px; }
+    .contact-success { display: none; padding: 14px; margin-top: 15px; border-radius: 12px; background: #eaf5df; color: #37683b; font-size: 12px; }
+    .contact-success.show { display: block; }
+    .site-footer { padding: 28px 0; color: rgba(255,255,255,.68); background: #102b20; font-size: 12px; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { color: white; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a:hover { color: var(--lime); }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 200; display: flex; align-items: center; gap: 10px; max-width: min(390px,calc(100vw - 32px)); padding: 14px 17px; border: 1px solid rgba(255,255,255,.14); border-radius: 14px; color: white; background: var(--forest); box-shadow: 0 15px 40px rgba(0,0,0,.18); font-size: 13px; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .2s, transform .2s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast .icon { color: var(--lime); }
+
+    @media (max-width: 980px) {
+      .nav-links { gap: 16px; }
+      .hero-grid { grid-template-columns: 1fr .85fr; gap: 22px; }
+      .hero-visual { min-height: 400px; }
+      .solution-grid, .steps-grid { grid-template-columns: repeat(2,1fr); }
+      .demo-top { grid-template-columns: 1fr; gap: 20px; }
+      .demo-callout { justify-self: start; }
+      .app-layout { grid-template-columns: 175px 1fr; }
+      .app-main { padding: 22px 20px; }
+      .impact-band-grid { gap: 35px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(var(--max), calc(100% - 32px)); }
+      .section { padding: 74px 0; }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: grid; }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 75px; padding: 15px; border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: var(--shadow); align-items: stretch; gap: 3px; }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a:not(.btn) { padding: 11px 10px; border-radius: 8px; }
+      .nav-links a:not(.btn):hover { background: #f1f5eb; }
+      .nav-links .btn { margin-top: 5px; }
+      .hero { padding: 62px 0 66px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero-copy { position: relative; z-index: 2; }
+      .hero h1 { font-size: clamp(40px, 10vw, 58px); }
+      .hero-copy > p { font-size: 16px; }
+      .hero-visual { min-height: 350px; margin: 0 5px; }
+      .landscape { inset: 14px 8px 20px; }
+      .float-impact { left: -3px; bottom: 12px; }
+      .float-point { right: -3px; top: 16px; }
+      .floating-card { padding: 10px 12px; }
+      .floating-card .float-icon { width: 35px; height: 35px; }
+      .floating-card strong { font-size: 15px; }
+      .hero-caption { left: 25px; bottom: 36px; }
+      .trust-items { grid-template-columns: 1fr 1fr; }
+      .trust-item { justify-content: flex-start; padding: 17px 9px; border-bottom: 1px solid var(--line); }
+      .trust-item:nth-child(2) { border-right: 0; }
+      .trust-item:nth-child(3), .trust-item:nth-child(4) { border-bottom: 0; }
+      .trust-item strong { font-size: 12px; }
+      .trust-item small { font-size: 10px; }
+      .split-heading { display: block; }
+      .split-heading > p { margin-top: 17px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-card { min-height: auto; }
+      .problem-card .icon-wrap { margin-bottom: 20px; }
+      .solution-grid { grid-template-columns: 1fr 1fr; }
+      .solution-card { min-height: auto; padding: 21px 17px; }
+      .solution-card .number { margin-bottom: 22px; }
+      .app-layout { grid-template-columns: 1fr; }
+      .app-sidebar { padding: 12px; }
+      .app-brand { display: none; }
+      .side-label, .sidebar-bottom { display: none; }
+      .app-nav { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 2px; }
+      .app-nav-btn { justify-content: center; gap: 7px; width: auto; min-width: max-content; padding: 10px 12px; font-size: 11px; }
+      .app-nav-btn .icon { width: 15px; height: 15px; }
+      .app-main { padding: 20px 14px; }
+      .app-topbar { margin-bottom: 18px; }
+      .app-page-title { font-size: 18px; }
+      .stats-grid { gap: 7px; }
+      .stat-card { padding: 12px 9px; }
+      .stat-value { font-size: 21px; }
+      .stat-label { font-size: 9px; align-items: start; }
+      .stat-note { font-size: 8px; }
+      .demo-columns, .map-layout, .impact-top { grid-template-columns: 1fr; }
+      .demo-content { min-height: 0; }
+      .map-layout .mini-map { min-height: 240px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .impact-hero-card .stat-value { font-size: 34px; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .step-card { padding: 18px 10px; }
+      .business-grid { grid-template-columns: 1fr; }
+      .impact-band-grid { grid-template-columns: 1fr; gap: 27px; }
+      .impact-list { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .contact-form { padding: 22px 16px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .hero-actions .btn { width: 100%; }
+      .trust-item { gap: 8px; }
+      .trust-item .icon-wrap { width: 32px; height: 32px; }
+      .solution-grid, .steps-grid, .impact-list { grid-template-columns: 1fr; }
+      .welcome-row { flex-direction: column; }
+      .stats-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .stat-label .icon { display: none; }
+      .stat-value { font-size: 19px; }
+      .demo-callout { align-items: flex-start; }
+      .footer-links { gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+
+    /* Mobile-app showcase: the demo is a phone UI, not a desktop website */
+    :root {
+      --motion-fast: 180ms;
+      --motion-base: 420ms;
+      --motion-slow: 680ms;
+      --motion-ease: cubic-bezier(.2,.75,.25,1);
+    }
+    .app-showcase { display: grid; grid-template-columns: minmax(310px, .88fr) minmax(320px, 1fr); align-items: center; gap: clamp(34px, 6vw, 78px); max-width: 1000px; margin: 0 auto; }
+    .app-device { position: relative; width: min(100%, 390px); margin-inline: auto; padding: 8px; border: 1px solid #26352a; border-radius: 43px; background: linear-gradient(145deg,#26332a,#0c1710); box-shadow: 0 35px 85px rgba(20,51,34,.23), inset 0 0 0 2px rgba(255,255,255,.06); }
+    .app-device::before { content: ''; position: absolute; left: -4px; top: 118px; width: 3px; height: 50px; border-radius: 5px 0 0 5px; background: #526057; }
+    .app-device::after { content: ''; position: absolute; right: -4px; top: 145px; width: 3px; height: 75px; border-radius: 0 5px 5px 0; background: #526057; }
+    .device-screen { position: relative; display: flex; flex-direction: column; height: 710px; overflow: hidden; border-radius: 34px; background: #f8faf5; color: var(--ink); isolation: isolate; }
+    .device-statusbar { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; flex: 0 0 34px; padding: 7px 19px 0; color: #1f3427; background: #fff; font-size: 10px; line-height: 1; font-weight: 800; }
+    .statusbar-island { position: absolute; width: 86px; height: 19px; top: 5px; left: 50%; transform: translateX(-50%); border-radius: 999px; background: #17251c; }
+    .statusbar-system { display: inline-flex; align-items: center; gap: 3px; }
+    .statusbar-system i { display: block; width: 3px; height: 6px; border-radius: 1px; background: #1f3427; }
+    .statusbar-system i:nth-child(2) { height: 8px; }
+    .statusbar-system b { display: block; width: 14px; height: 7px; border: 1px solid #1f3427; border-radius: 2px; position: relative; }
+    .statusbar-system b::after { content: ''; position: absolute; inset: 1px 3px 1px 1px; border-radius: 1px; background: #1f3427; }
+    .app-mobile-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: 0 0 auto; padding: 10px 18px 13px; background: #fff; border-bottom: 1px solid #edf1e9; }
+    .app-mobile-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--forest); font-family: 'Manrope',sans-serif; font-size: 13px; font-weight: 800; letter-spacing: -.035em; }
+    .app-mobile-brand small { display: block; margin-top: 1px; color: #819080; font-family: 'DM Sans',sans-serif; font-size: 7px; line-height: 1.4; letter-spacing: .07em; font-weight: 700; }
+    .app-brand-mark { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 11px; background: var(--lime); color: var(--forest); }
+    .app-brand-mark .icon { width: 19px; height: 19px; }
+    .app-notification { position: relative; display: grid; place-items: center; width: 37px; height: 37px; border: 1px solid #e7ece2; border-radius: 12px; background: #f9fbf6; color: #476b4e; transition: transform var(--motion-fast) var(--motion-ease), background var(--motion-fast) ease; }
+    .app-notification:hover { transform: translateY(-2px); background: #edf5e5; }
+    .app-notification .icon { width: 18px; height: 18px; }
+    .app-notification span { position: absolute; right: 7px; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: #d5a544; border: 1px solid white; }
+    .app-main { display: flex; flex: 1 1 auto; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; padding: 18px 15px 8px; background: #f8faf5; }
+    .app-topbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 0 0 auto; margin-bottom: 13px; }
+    .app-breadcrumb { margin-bottom: 5px; color: #879583; font-size: 8px; line-height: 1.2; font-weight: 800; letter-spacing: .11em; }
+    .app-page-title { margin: 0; color: #203a2a; font-family: 'Manrope',sans-serif; font-size: 20px; line-height: 1.18; font-weight: 800; letter-spacing: -.05em; }
+    .demo-mode { display: inline-flex; align-items: center; gap: 5px; padding: 6px 8px; border-radius: 999px; background: #edf5df; color: #557c3f; font-size: 8px; font-weight: 800; white-space: nowrap; }
+    .demo-mode::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #7eb84f; }
+    .demo-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #cbdac1 transparent; padding: 0 1px 13px; }
+    .app-bottom-nav { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); flex: 0 0 auto; gap: 2px; padding: 8px 8px 2px; border-top: 1px solid #e9eee4; background: rgba(255,255,255,.97); }
+    .app-nav-btn { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 48px; padding: 5px 2px; border: 0; border-radius: 12px; color: #8b978a; background: transparent; font-size: 9px; line-height: 1.1; font-weight: 700; transition: color var(--motion-fast) ease, background var(--motion-fast) ease, transform var(--motion-fast) var(--motion-ease); }
+    .app-nav-btn .icon { width: 19px; height: 19px; }
+    .app-nav-btn:hover { color: var(--leaf); background: #f5f8f0; }
+    .app-nav-btn:active { transform: scale(.96); }
+    .app-nav-btn[aria-current="page"] { color: var(--forest); background: #edf5e5; }
+    .app-nav-btn[aria-current="page"]::before { content: ''; position: absolute; top: -8px; left: 30%; right: 30%; height: 3px; border-radius: 0 0 4px 4px; background: var(--leaf); }
+    .device-home-indicator { display: flex; justify-content: center; flex: 0 0 16px; align-items: center; background: #fff; }
+    .device-home-indicator span { width: 86px; height: 4px; border-radius: 999px; background: #1d2c21; }
+    .app-showcase-copy { max-width: 475px; }
+    .app-showcase-copy h3 { margin: 19px 0 14px; color: var(--forest); font-family: 'Manrope',sans-serif; font-size: clamp(27px,3vw,38px); line-height: 1.16; letter-spacing: -.05em; }
+    .app-showcase-copy > p { margin: 0 0 23px; color: #647367; font-size: 15px; line-height: 1.8; }
+    .app-feature-list { display: grid; gap: 9px; }
+    .app-feature-action { display: flex; align-items: center; gap: 13px; width: 100%; padding: 14px; border: 1px solid #dfe8d8; border-radius: 15px; color: var(--ink); background: rgba(255,255,255,.76); text-align: left; transition: transform var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease; }
+    .app-feature-action:hover { transform: translateX(4px); border-color: #b9d0aa; background: white; box-shadow: 0 10px 26px rgba(32,72,43,.07); }
+    .app-feature-action:active { transform: scale(.99); }
+    .app-feature-icon { display: grid; place-items: center; flex: 0 0 auto; width: 42px; height: 42px; border-radius: 13px; background: #edf5e3; color: #4f8658; }
+    .app-feature-icon .icon { width: 20px; height: 20px; }
+    .app-feature-action > span:nth-child(2) { flex: 1; min-width: 0; }
+    .app-feature-action strong { display: block; margin-bottom: 3px; font-size: 12px; font-weight: 800; }
+    .app-feature-action small { display: block; color: #7b897c; font-size: 11px; line-height: 1.45; }
+    .app-feature-action .feature-arrow { width: 16px; height: 16px; color: #7c9875; }
+    .app-note { display: flex; align-items: flex-start; gap: 9px; margin-top: 17px; color: #788678; font-size: 11px; line-height: 1.6; }
+    .app-note .icon { flex: 0 0 auto; width: 16px; height: 16px; color: #638a5b; margin-top: 1px; }
+    .demo-disclaimer { display: flex; align-items: flex-start; gap: 9px; max-width: 1000px; margin: 26px auto 0; padding: 14px 16px; border: 1px solid #dbe5d4; border-radius: 14px; color: #6f7e70; background: rgba(255,255,255,.55); font-size: 11px; line-height: 1.6; }
+    .demo-disclaimer .icon { width: 16px; height: 16px; flex: 0 0 auto; color: #61865a; margin-top: 1px; }
+
+    /* Mobile layouts inside the simulated app */
+    #demo-content .welcome-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    #demo-content .welcome-row h3 { margin: 0 0 5px; font-size: 14px; line-height: 1.3; letter-spacing: -.035em; }
+    #demo-content .welcome-row p { margin: 0; color: #829083; font-size: 10px; line-height: 1.5; }
+    #demo-content .small-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 35px; padding: 8px 10px; border: 0; border-radius: 10px; color: white; background: var(--forest); font-size: 10px; line-height: 1.2; font-weight: 800; transition: transform var(--motion-fast) var(--motion-ease), background var(--motion-fast) ease; }
+    #demo-content .small-btn:hover { background: #2b5a3c; transform: translateY(-1px); }
+    #demo-content .small-btn:active { transform: scale(.97); }
+    #demo-content .small-btn .icon { width: 14px; height: 14px; }
+    #demo-content .status { display: inline-flex; align-items: center; padding: 4px 7px; border-radius: 999px; color: #58884c; background: #edf6e7; font-size: 8px; line-height: 1.1; font-weight: 800; white-space: nowrap; }
+    .mobile-greeting { margin: 0 0 13px; }
+    .mobile-greeting .overline { margin-bottom: 5px; color: #80a06e; font-size: 8px; font-weight: 800; letter-spacing: .1em; }
+    .mobile-greeting h3 { margin: 0 0 5px; color: #294431; font-size: 16px; line-height: 1.25; letter-spacing: -.045em; }
+    .mobile-greeting p { margin: 0; color: #7c897b; font-size: 10px; line-height: 1.5; }
+    .impact-summary { position: relative; overflow: hidden; margin-bottom: 13px; padding: 17px; border-radius: 18px; color: white; background: linear-gradient(135deg,#2e6b43 0%,#16392a 100%); box-shadow: 0 10px 22px rgba(22,57,42,.12); }
+    .impact-summary::after { content: ''; position: absolute; width: 142px; height: 142px; right: -54px; top: -67px; border: 1px solid rgba(199,239,119,.24); border-radius: 50%; box-shadow: 0 0 0 19px rgba(199,239,119,.035), 0 0 0 39px rgba(199,239,119,.025); pointer-events: none; }
+    .impact-summary-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 8px; color: rgba(255,255,255,.73); font-size: 9px; font-weight: 700; }
+    .impact-summary-top .status { color: #d7f4a7; background: rgba(199,239,119,.13); }
+    .impact-big { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 7px; margin: 7px 0 3px; }
+    .impact-big strong { font-family: 'Manrope',sans-serif; font-size: 37px; line-height: 1; letter-spacing: -.065em; }
+    .impact-big small { color: rgba(255,255,255,.75); font-size: 11px; }
+    .impact-summary > p { position: relative; z-index: 1; margin: 0 0 14px; color: rgba(255,255,255,.61); font-size: 9px; }
+    .app-mini-stats { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .app-mini-stats > div { padding: 10px 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 11px; background: rgba(255,255,255,.07); }
+    .app-mini-stats span { display: block; margin-bottom: 3px; color: rgba(255,255,255,.61); font-size: 8px; }
+    .app-mini-stats strong { font-family: 'Manrope',sans-serif; font-size: 16px; line-height: 1.1; }
+    .quick-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 13px; }
+    .quick-action { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; min-width: 0; padding: 13px; border: 1px solid #e3eadc; border-radius: 15px; background: white; color: #294431; text-align: left; transition: transform var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease; }
+    .quick-action:hover { transform: translateY(-2px); border-color: #bfd4b3; box-shadow: 0 8px 18px rgba(25,60,35,.06); }
+    .quick-action:active { transform: scale(.98); }
+    .quick-action .quick-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; color: #54825a; background: #edf5e5; }
+    .quick-action:nth-child(2) .quick-icon { color: #8d742e; background: #fbf1d8; }
+    .quick-action .icon { width: 18px; height: 18px; }
+    .quick-action strong { display: block; font-size: 10px; line-height: 1.3; }
+    .quick-action small { display: block; margin-top: 3px; color: #839083; font-size: 8px; line-height: 1.4; }
+    #demo-content .mobile-card { padding: 14px; border: 1px solid #e5ebe0; border-radius: 15px; background: white; margin-bottom: 11px; }
+    #demo-content .mobile-card .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 7px; margin-bottom: 12px; }
+    #demo-content .mobile-card .panel-head h4 { margin: 0; font-family: 'Manrope',sans-serif; font-size: 11px; font-weight: 800; }
+    #demo-content .text-link { border: 0; padding: 3px; color: #518259; background: transparent; font-size: 9px; font-weight: 800; }
+    #demo-content .campaign-art { min-height: 88px; margin: -1px 0 11px; border-radius: 11px; }
+    #demo-content .campaign-detail h4 { margin: 0 0 5px; font-size: 11px; }
+    #demo-content .campaign-detail p { margin: 0 0 10px; color: #7c897d; font-size: 9px; line-height: 1.5; }
+    #demo-content .progress-track { height: 5px; border-radius: 99px; overflow: hidden; background: #e9eee4; }
+    #demo-content .progress-track span { display: block; height: 100%; width: 68%; border-radius: inherit; background: #78ae5f; }
+    #demo-content .progress-label { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; color: #849084; font-size: 8px; }
+    #demo-content .activity-list { display: grid; gap: 12px; }
+    #demo-content .activity-item { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    #demo-content .activity-icon { display: grid; place-items: center; flex: 0 0 auto; width: 31px; height: 31px; border-radius: 10px; color: #4e8b5b; background: #eef5e5; }
+    #demo-content .activity-icon .icon { width: 16px; height: 16px; }
+    #demo-content .activity-text { flex: 1; min-width: 0; }
+    #demo-content .activity-text strong { display: block; font-size: 9px; line-height: 1.35; }
+    #demo-content .activity-text small { display: block; margin-top: 3px; color: #8b978c; font-size: 8px; line-height: 1.3; }
+    #demo-content .activity-item .status { font-size: 7px; }
+    #demo-content .map-toolbar { display: flex; align-items: center; gap: 6px; margin: 0 -1px 11px; overflow-x: auto; padding-bottom: 3px; scrollbar-width: none; }
+    #demo-content .map-toolbar::-webkit-scrollbar { display: none; }
+    #demo-content .filter-chip { flex: 0 0 auto; min-height: 32px; padding: 7px 10px; border: 1px solid #e2e9dd; border-radius: 999px; background: white; color: #6d7b6e; font-size: 9px; font-weight: 800; transition: background var(--motion-fast), color var(--motion-fast), transform var(--motion-fast); }
+    #demo-content .filter-chip[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: white; }
+    #demo-content .filter-chip:active { transform: scale(.96); }
+    #demo-content .map-layout { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    #demo-content .mini-map { position: relative; min-height: 174px; overflow: hidden; border: 1px solid #dce7d4; border-radius: 14px; background: #e7efde; }
+    #demo-content .mini-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    #demo-content .map-label { position: absolute; font-size: 8px; font-weight: 800; color: #55765b; background: rgba(255,255,255,.85); padding: 4px 6px; border-radius: 6px; }
+    #demo-content .map-label.one { top: 12%; left: 5%; }
+    #demo-content .map-label.two { bottom: 13%; right: 5%; }
+    #demo-content .map-pin { position: absolute; display: grid; place-items: center; width: 27px; height: 27px; border: 3px solid white; border-radius: 50% 50% 50% 5px; background: #4e9661; color: white; box-shadow: 0 4px 11px rgba(31,73,45,.22); transform: rotate(-45deg); animation: pinDrop .38s var(--motion-ease) both; }
+    #demo-content .map-pin .icon { width: 11px; height: 11px; transform: rotate(45deg); }
+    #demo-content .point-list { display: grid; align-content: start; gap: 7px; }
+    #demo-content .point-card { padding: 11px; border: 1px solid #e5ebe0; border-radius: 11px; background: white; animation: softArrive .32s var(--motion-ease) both; }
+    #demo-content .point-card strong { display: block; margin-bottom: 4px; font-size: 10px; }
+    #demo-content .point-card p { margin: 0 0 5px; color: #7e8a7d; font-size: 9px; line-height: 1.4; }
+    #demo-content .point-type { color: #5c8d50; font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    #demo-content .form-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    #demo-content .field { display: grid; gap: 5px; }
+    #demo-content .field.full { grid-column: auto; }
+    #demo-content .field label { color: #526255; font-size: 10px; font-weight: 800; }
+    #demo-content .field input, #demo-content .field select, #demo-content .field textarea { width: 100%; min-height: 42px; padding: 10px 11px; border: 1px solid #dce5d8; border-radius: 10px; outline: none; color: var(--ink); background: white; font-family: inherit; font-size: 11px; transition: border-color var(--motion-fast), box-shadow var(--motion-fast); }
+    #demo-content .field textarea { min-height: 76px; resize: vertical; }
+    #demo-content .field input:focus, #demo-content .field select:focus, #demo-content .field textarea:focus { border-color: #75a663; box-shadow: 0 0 0 3px rgba(117,166,99,.13); }
+    #demo-content #report-form .small-btn { width: 100%; min-height: 42px; }
+    #demo-content .form-note { margin: 10px 0 0; color: #8a9588; font-size: 9px; line-height: 1.5; }
+    #demo-content .report-success { display: none; padding: 18px; border: 1px solid #d6e7ce; border-radius: 14px; background: #f1f8e9; color: #3d6e3e; }
+    #demo-content .report-success.show { display: block; animation: softArrive .35s var(--motion-ease) both; }
+    #demo-content .report-success .icon { width: 25px; height: 25px; margin-bottom: 9px; }
+    #demo-content .report-success strong { display: block; margin-bottom: 5px; font-family: 'Manrope',sans-serif; font-size: 12px; }
+    #demo-content .report-success p { margin: 0; font-size: 10px; line-height: 1.5; }
+    #demo-content .impact-top { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 12px; }
+    #demo-content .impact-hero-card { padding: 17px; border-radius: 15px; color: white; background: var(--forest); }
+    #demo-content .impact-hero-card .stat-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; color: rgba(255,255,255,.68); font-size: 9px; }
+    #demo-content .impact-hero-card .stat-label .icon { width: 16px; height: 16px; }
+    #demo-content .impact-hero-card .stat-value { font-family: 'Manrope',sans-serif; font-size: 34px; line-height: 1; font-weight: 800; letter-spacing: -.06em; }
+    #demo-content .impact-hero-card .stat-note { margin-top: 7px; color: var(--lime); font-size: 9px; }
+    #demo-content .impact-bars { display: grid; gap: 14px; }
+    #demo-content .bar-row { display: grid; grid-template-columns: 54px 1fr 42px; align-items: center; gap: 7px; font-size: 9px; }
+    #demo-content .bar-row > span:first-child { color: #748174; }
+    #demo-content .bar-track { height: 7px; border-radius: 99px; overflow: hidden; background: #edf1e9; }
+    #demo-content .bar-track span { display: block; height: 100%; border-radius: inherit; background: #7eaf64; }
+    #demo-content .bar-row strong { text-align: right; font-size: 9px; }
+    #demo-content .demo-columns { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    #demo-content .panel { min-width: 0; padding: 14px; border: 1px solid #e6ebe2; border-radius: 14px; background: white; }
+    #demo-content .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 7px; margin-bottom: 12px; }
+    #demo-content .panel-head h4 { margin: 0; font-family: 'Manrope',sans-serif; font-size: 11px; font-weight: 800; }
+    #demo-content .stat-value { font-family: 'Manrope',sans-serif; font-size: 22px; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+    #demo-content .stat-label { display: flex; justify-content: space-between; align-items: start; gap: 5px; color: #7f8d80; font-size: 8px; line-height: 1.3; font-weight: 700; margin-bottom: 9px; }
+    #demo-content .stat-label .icon { width: 14px; height: 14px; color: #559062; }
+    #demo-content .stat-note { font-size: 8px; color: #68945d; margin-top: 6px; }
+    #demo-content .stats-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; margin-bottom: 12px; }
+    #demo-content .stat-card { min-width: 0; padding: 10px 8px; border: 1px solid #e6ebe2; border-radius: 12px; background: white; }
+    #demo-content .stat-card .stat-value { font-size: 18px; }
+    #demo-content .stat-card .stat-value small { font-size: 9px !important; }
+    #demo-content .stat-card .stat-label { font-size: 7px; }
+    #demo-content .stat-card .stat-note { font-size: 7px; line-height: 1.3; }
+    .screen-enter { animation: appScreenEnter .28s var(--motion-ease) both; }
+    @keyframes appScreenEnter { from { opacity: .35; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes softArrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pinDrop { from { opacity: 0; transform: translateY(-7px) rotate(-45deg) scale(.85); } to { opacity: 1; transform: translateY(0) rotate(-45deg) scale(1); } }
+
+    /* Site-wide motion: reveal on scroll, staggered content and tactile controls */
+    .motion-reveal { opacity: 0; transform: translate3d(0,22px,0); transition: opacity var(--motion-slow) var(--motion-ease), transform var(--motion-slow) var(--motion-ease); transition-delay: var(--reveal-delay,0ms); will-change: opacity, transform; }
+    .motion-reveal.is-visible { opacity: 1; transform: translate3d(0,0,0); will-change: auto; }
+    .problem-card, .solution-card, .step-card, .business-card, .impact-item, .trust-item { transition: transform var(--motion-base) var(--motion-ease), border-color var(--motion-base) ease, box-shadow var(--motion-base) ease, background var(--motion-base) ease; }
+    .problem-card:hover, .solution-card:hover, .step-card:hover, .business-card:hover, .impact-item:hover { transform: translateY(-4px); }
+    .problem-card .icon-wrap, .business-card .icon-wrap, .trust-item .icon-wrap { transition: transform var(--motion-base) var(--motion-ease); }
+    .problem-card:hover .icon-wrap, .business-card:hover .icon-wrap { transform: rotate(-5deg) scale(1.06); }
+    .hero .eyebrow-dot { animation: dotGlow 2.8s ease-in-out infinite; }
+    .sun { animation: sunBreathe 7s ease-in-out infinite; transform-origin: center; }
+    .water-lines { animation: waterShimmer 8s ease-in-out infinite alternate; }
+    .float-impact { animation: floatSoft 5.8s ease-in-out infinite; }
+    .float-point { animation: floatSoft 6.4s ease-in-out .7s infinite; }
+    .brand-mark { transition: transform var(--motion-base) var(--motion-ease), border-radius var(--motion-base) var(--motion-ease); }
+    .brand:hover .brand-mark { transform: rotate(-7deg) scale(1.06); border-radius: 11px; }
+    .btn .icon { transition: transform var(--motion-base) var(--motion-ease); }
+    .btn:hover .icon { transform: translate(2px,-2px); }
+    .footer-links a, .nav-links a:not(.btn) { transition: color var(--motion-fast) ease, transform var(--motion-fast) var(--motion-ease); }
+    .footer-links a:hover { transform: translateY(-1px); }
+    @keyframes floatSoft { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @keyframes sunBreathe { 0%,100% { transform: scale(1); box-shadow: 0 0 0 20px rgba(248,231,162,.14), 0 0 80px rgba(248,231,162,.55); } 50% { transform: scale(1.045); box-shadow: 0 0 0 26px rgba(248,231,162,.1), 0 0 95px rgba(248,231,162,.48); } }
+    @keyframes waterShimmer { from { transform: rotate(-4deg) translateX(-5px); opacity: .3; } to { transform: rotate(-2deg) translateX(7px); opacity: .55; } }
+    @keyframes dotGlow { 0%,100% { box-shadow: 0 0 0 4px rgba(168,214,94,.15); } 50% { box-shadow: 0 0 0 7px rgba(168,214,94,.04); } }
+    @media (max-width: 980px) {
+      .app-showcase { grid-template-columns: minmax(290px,.9fr) minmax(270px,1fr); gap: 28px; }
+      .device-screen { height: 700px; }
+    }
+    @media (max-width: 760px) {
+      .app-showcase { grid-template-columns: 1fr; gap: 35px; }
+      .app-device { width: min(100%, 390px); }
+      .device-screen { height: min(710px, 76vh); min-height: 610px; }
+      .app-showcase-copy { max-width: 520px; margin: 0 auto; }
+      .app-showcase-copy h3 { font-size: 30px; }
+      .demo-disclaimer { margin-top: 28px; }
+    }
+    @media (max-width: 420px) {
+      .app-device { width: calc(100% - 4px); padding: 6px; border-radius: 37px; }
+      .device-screen { height: min(690px, 74vh); min-height: 570px; border-radius: 30px; }
+      .app-main { padding: 15px 12px 7px; }
+      .app-mobile-header { padding-inline: 14px; }
+      .app-page-title { font-size: 18px; }
+      .app-showcase-copy h3 { font-size: 27px; }
+      .app-feature-action { padding: 12px; }
+      #demo-content .welcome-row { flex-direction: column; }
+      #demo-content .welcome-row .small-btn { width: 100%; }
+      #demo-content .stats-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .motion-reveal, .motion-reveal.is-visible { opacity: 1 !important; transform: none !important; transition: none !important; will-change: auto !important; }
+      .sun, .water-lines, .float-impact, .float-point, .hero .eyebrow-dot, #demo-content .map-pin, #demo-content .point-card, .screen-enter, #demo-content .report-success.show { animation: none !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20.8 3.2C12 3.1 5.1 5.8 4.1 12.1c-.7 4.6 2.1 7.2 5.7 7.1 6.3-.2 9.8-8.3 11-16Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21c2.5-5.7 6.7-8.9 12-11.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-recycle" viewBox="0 0 24 24"><path d="m7 7 2-3h5l2 3M16 7h3l2 4-3 5M18 16l-2 4h-5l-2-3M9 17H5l-2-4 2-3M7 10l-2 3M14 7l2 3M11 17l-2 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m10.3 4.2-7.5 13A2 2 0 0 0 4.5 20h15a2 2 0 0 0 1.7-2.8l-7.5-13a2 2 0 0 0-3.4 0Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 9v4m0 3h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-7.8a4 4 0 0 1 0 7.6m5 10v-2a4 4 0 0 0-3-3.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-water" viewBox="0 0 24 24"><path d="M3 7c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M2 12c2 0 2-2 5-2s3 2 5 2 2-2 5-2 3 2 5 2M4 17c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="m3 9 9-5 9 5-9 5-9-5Zm3 3v5c4 3 8 3 12 0v-5M21 9v7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5l7-3 7 3v16M9 8h1m4 0h1M9 12h1m4 0h1M10 21v-4h4v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 3v4M8 3v4M3 10h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5m0-8h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 10h18c0-2-3-3-3-10M10 21h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Lagoa Limpa, início">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span>
+        <span>Lagoa Limpa<small>COLETA · RECICLA · TRANSFORMA</small></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+      <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+        <a href="#desafio">O desafio</a>
+        <a href="#solucao">A solução</a>
+        <a href="#demonstracao">App em ação</a>
+        <a href="#modelo">Sustentabilidade financeira</a>
+        <a class="btn btn-dark" href="#participar">Quero participar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Uma iniciativa para Lagoa de São Francisco · PI</span>
+          <h1>O futuro da lagoa começa com <span class="text-lime">a gente.</span></h1>
+          <p>Conectamos moradores, pontos de coleta e parceiros para transformar resíduos em oportunidades — e cuidado em atitude diária.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#demonstracao">Conheça o aplicativo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-outline" href="#como-funciona">Como funciona</a>
+          </div>
+          <div class="hero-note">
+            <div class="avatar-stack" aria-hidden="true"><span>MO</span><span>ES</span><span>CO</span></div>
+            <span>Uma mudança coletiva, começando no nosso território.</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Ilustração de uma lagoa cercada por vegetação">
+          <div class="landscape" aria-hidden="true">
+            <span class="sun"></span><span class="hill hill-one"></span><span class="hill hill-two"></span><span class="water"></span><span class="water-lines"></span><span class="tree tree-a"></span><span class="tree tree-b"></span>
+          </div>
+          <div class="floating-card float-impact"><span class="float-icon"><svg class="icon" aria-hidden="true"><use href="#i-recycle"/></svg></span><span><strong>Resíduo vira recurso</strong><small>Mais reaproveitamento local</small></span></div>
+          <div class="floating-card float-point"><span class="float-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><span><strong>Pontos de coleta</strong><small>Informação mais acessível</small></span></div>
+          <div class="hero-caption">Cuidar do lugar onde vivemos</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip" aria-label="Áreas de atuação">
+      <div class="container trust-items">
+        <div class="trust-item"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-recycle"/></svg></span><span><strong>Coleta seletiva</strong><small>Descarte consciente</small></span></div>
+        <div class="trust-item"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span><span><strong>Economia circular</strong><small>Materiais com novo valor</small></span></div>
+        <div class="trust-item"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><span><strong>Comunidade ativa</strong><small>Todo mundo participa</small></span></div>
+        <div class="trust-item"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-water"/></svg></span><span><strong>Proteção ambiental</strong><small>Cuidado com a lagoa</small></span></div>
+      </div>
+    </div>
+
+    <section class="section" id="desafio">
+      <div class="container">
+        <div class="split-heading">
+          <div><span class="eyebrow"><span class="eyebrow-dot"></span> Por que agir agora?</span><h2>O descarte não termina quando o lixo sai da nossa mão.</h2></div>
+          <p>Quando resíduos vão para locais inadequados, o impacto chega à água, ao solo, aos animais e à qualidade de vida da comunidade.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="problem-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-water"/></svg></span><h3>Ambiente em risco</h3><p>O descarte incorreto pode contaminar a água e o solo, prejudicando os ecossistemas e a saúde pública.</p></article>
+          <article class="problem-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><h3>Falta de informação</h3><p>Sem orientação clara sobre onde e como descartar, materiais que poderiam ser reaproveitados acabam no lugar errado.</p></article>
+          <article class="problem-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-recycle"/></svg></span><h3>Valor desperdiçado</h3><p>Recicláveis e resíduos orgânicos podem gerar oportunidades quando são separados e destinados corretamente.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section solution" id="solucao">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> A proposta Lagoa Limpa</span><h2>Uma solução simples.<br><span class="text-lime">Um impacto que se multiplica.</span></h2><p>Unimos tecnologia, educação e parcerias para ajudar a comunidade a agir — do primeiro registro ao destino correto dos materiais.</p></div>
+        <div class="solution-grid">
+          <article class="solution-card"><div class="number"><span>01 / LOCALIZAR</span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></div><h3>Encontre pontos</h3><p>Consulte locais de coleta e veja quais materiais podem ser recebidos.</p></article>
+          <article class="solution-card"><div class="number"><span>02 / REPORTAR</span><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></div><h3>Avise a comunidade</h3><p>Registre pontos com descarte irregular para apoiar a mobilização local.</p></article>
+          <article class="solution-card"><div class="number"><span>03 / REAPROVEITAR</span><svg class="icon" aria-hidden="true"><use href="#i-recycle"/></svg></div><h3>Dê novo destino</h3><p>Incentive a separação de recicláveis e o aproveitamento de resíduos orgânicos.</p></article>
+          <article class="solution-card"><div class="number"><span>04 / ACOMPANHAR</span><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></div><h3>Veja a evolução</h3><p>Acompanhe ações, campanhas e indicadores para reconhecer o impacto coletivo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demonstracao">
+      <div class="container">
+        <div class="demo-top">
+          <div><span class="eyebrow"><span class="eyebrow-dot"></span> Experimente sem sair do site</span><h2>O aplicativo em ação.</h2><p>Navegue pela demonstração, explore os pontos de coleta, registre um descarte fictício e veja como o painel de impacto funciona.</p></div>
+          <div class="demo-callout"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Protótipo interativo:</strong> os dados são ilustrativos e os registros ficam apenas nesta demonstração.</span></div>
+        </div>
+        <div class="app-showcase" id="app-demo">
+          <div class="app-device" aria-label="Prévia do aplicativo Lagoa Limpa. Use a navegação inferior para experimentar as telas.">
+            <div class="device-screen">
+              <div class="device-statusbar" aria-hidden="true"><span>9:41</span><span class="statusbar-island"></span><span class="statusbar-system"><i></i><i></i><b></b></span></div>
+              <header class="app-mobile-header">
+                <div class="app-mobile-brand"><span class="app-brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span><span>Lagoa Limpa<small>COLETA · RECICLA · TRANSFORMA</small></span></div>
+                <button class="app-notification" type="button" data-toast="Você está visualizando notificações de demonstração." aria-label="Ver notificações de demonstração"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span></span></button>
+              </header>
+              <div class="app-main">
+                <div class="app-topbar"><div><div class="app-breadcrumb">LAGOA LIMPA / <span id="app-breadcrumb-current">INÍCIO</span></div><h3 class="app-page-title" id="app-page-title">Seu espaço sustentável</h3></div><span class="demo-mode">DEMO</span></div>
+                <div class="demo-content" id="demo-content" aria-live="polite"></div>
+              </div>
+              <nav class="app-bottom-nav" aria-label="Navegação do aplicativo">
+                <button class="app-nav-btn" type="button" data-view="home" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Início</span></button>
+                <button class="app-nav-btn" type="button" data-view="map"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Coletas</span></button>
+                <button class="app-nav-btn" type="button" data-view="report"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span>Reportar</span></button>
+                <button class="app-nav-btn" type="button" data-view="impact"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span>Impacto</span></button>
+              </nav>
+              <div class="device-home-indicator" aria-hidden="true"><span></span></div>
+            </div>
+          </div>
+          <aside class="app-showcase-copy">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> Uma experiência no formato de app</span>
+            <h3>Seu próximo gesto sustentável começa aqui.</h3>
+            <p>Explore uma prévia do aplicativo móvel Lagoa Limpa. Toque nos ícones na parte inferior da tela para trocar de área e experimentar os principais fluxos.</p>
+            <div class="app-feature-list">
+              <button class="app-feature-action" type="button" data-view="map"><span class="app-feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><span><strong>Encontre pontos de coleta</strong><small>Explore locais e filtre por material.</small></span><svg class="icon feature-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <button class="app-feature-action" type="button" data-view="report"><span class="app-feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span><span><strong>Registre um descarte</strong><small>Simule um relato em poucos passos.</small></span><svg class="icon feature-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <button class="app-feature-action" type="button" data-view="impact"><span class="app-feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span><span><strong>Acompanhe seu impacto</strong><small>Veja indicadores ilustrativos de reciclagem.</small></span><svg class="icon feature-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+            <div class="app-note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Protótipo demonstrativo: pontos, números e registros são fictícios. Nenhuma informação é enviada a um servidor.</span></div>
+          </aside>
+        </div>
+        <div class="demo-disclaimer"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>A demonstração funciona dentro desta página, mas a interface foi desenhada como um aplicativo móvel, com navegação inferior e telas próprias.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> Do primeiro passo ao impacto</span><h2>Como funciona na prática?</h2><p>Um fluxo claro para facilitar a participação e apoiar ações ambientais organizadas.</p></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-no">01</span><h3>Identificar</h3><p>A comunidade sinaliza necessidades, pontos de descarte e oportunidades de coleta.</p></article>
+          <article class="step-card"><span class="step-no">02</span><h3>Separar</h3><p>Materiais são orientados por categoria: recicláveis, orgânicos e rejeitos.</p></article>
+          <article class="step-card"><span class="step-no">03</span><h3>Conectar</h3><p>Moradores, poder público, escolas e parceiros organizam os próximos passos.</p></article>
+          <article class="step-card"><span class="step-no">04</span><h3>Transformar</h3><p>O material segue para o destino adequado e as ações podem ser acompanhadas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section business-section" id="modelo">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> Modelo de sustentabilidade</span><h2>Impacto ambiental também pode gerar valor.</h2><p>O projeto pode desenvolver fontes de receita complementares para fortalecer a operação e ampliar as ações locais.</p></div>
+        <div class="business-grid">
+          <article class="business-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-recycle"/></svg></span><div><h3>Comercialização de recicláveis</h3><p>Organizar materiais separados e encaminhá-los a cooperativas, recicladoras ou compradores parceiros.</p></div></article>
+          <article class="business-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span><div><h3>Composto orgânico</h3><p>Estudar a produção e venda de composto a partir de resíduos orgânicos adequados, conforme a estrutura disponível.</p></div></article>
+          <article class="business-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span><div><h3>Parcerias e patrocínios</h3><p>Conectar empresas locais a campanhas, ações de limpeza e iniciativas com metas ambientais claras.</p></div></article>
+          <article class="business-card"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg></span><div><h3>Educação ambiental</h3><p>Oferecer oficinas, campanhas educativas e atividades para escolas, organizações e empreendimentos.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section impact-band" id="impacto">
+      <div class="container impact-band-grid">
+        <div><span class="eyebrow"><span class="eyebrow-dot"></span> Nosso objetivo coletivo</span><h2>Uma lagoa mais limpa é uma conquista de todos.</h2><p>O resultado depende de participação comunitária, logística, estrutura de coleta e parcerias comprometidas. A tecnologia é o elo para ajudar essas ações a acontecerem.</p><a href="#participar" class="btn btn-primary">Faça parte da mudança <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <div class="impact-list">
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Reduzir o descarte irregular</div>
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Incentivar a reciclagem</div>
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Mobilizar a comunidade</div>
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Apoiar oportunidades locais</div>
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Promover educação ambiental</div>
+          <div class="impact-item"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Preservar a lagoa</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="participar">
+      <div class="container contact-grid">
+        <div class="contact-copy"><span class="eyebrow"><span class="eyebrow-dot"></span> Vem com a gente</span><h2>Tem uma ideia? Vamos conversar.</h2><p>Se você é morador, comerciante, educador ou parceiro em potencial, conte como gostaria de participar do Lagoa Limpa.</p><div class="contact-detail"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span><strong>Uma rede feita por pessoas.</strong><br>O envolvimento da comunidade é parte essencial da proposta.</span></div><div class="contact-detail"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span><strong>Lagoa de São Francisco, Piauí.</strong><br>Uma iniciativa pensada para valorizar o território.</span></div></div>
+        <form class="contact-form" id="contact-form">
+          <h3>Quero participar</h3><p>Preencha os campos abaixo para simular seu interesse no projeto.</p>
+          <div class="form-grid">
+            <div class="field"><label for="lead-name">Nome</label><input id="lead-name" name="name" autocomplete="name" placeholder="Seu nome" required></div>
+            <div class="field"><label for="lead-contact">E-mail ou WhatsApp</label><input id="lead-contact" name="contact" autocomplete="email" placeholder="Como podemos falar com você?" required></div>
+            <div class="field"><label for="lead-profile">Você representa</label><select id="lead-profile" name="profile" required><option value="">Selecione uma opção</option><option>Morador(a)</option><option>Comércio ou empresa</option><option>Escola ou instituição</option><option>Coletor(a) ou reciclador(a)</option><option>Outro perfil</option></select></div>
+            <div class="field"><label for="lead-interest">Quero ajudar com</label><select id="lead-interest" name="interest" required><option value="">Selecione uma opção</option><option>Mutirões e campanhas</option><option>Coleta e reciclagem</option><option>Patrocínio ou parceria</option><option>Educação ambiental</option><option>Desenvolvimento do aplicativo</option></select></div>
+            <div class="field full"><label for="lead-message">Mensagem (opcional)</label><textarea id="lead-message" name="message" placeholder="Conte sua ideia ou como pode contribuir..."></textarea></div>
+            <div class="field full"><button class="btn btn-dark" type="submit">Enviar demonstração <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+          </div>
+          <div class="contact-success" id="contact-success" role="status">Obrigado pelo interesse! Este formulário é demonstrativo: os dados não foram enviados nem armazenados em um servidor.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row"><a class="brand footer-brand" href="#inicio"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span><span>Lagoa Limpa<small>COLETA · RECICLA · TRANSFORMA</small></span></a><span>Projeto de sustentabilidade comunitária · Lagoa de São Francisco, PI</span><div class="footer-links"><a href="#solucao">Solução</a><a href="#demonstracao">Demonstração</a><a href="#participar">Participar</a></div></div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span id="toast-message">Pronto!</span></div>
+
+  <script>
+    (() => {
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+      const state = { view: 'home', mapFilter: 'todos', reports: 0 };
+      const content = $('#demo-content');
+      const titles = {
+        home: ['INÍCIO', 'Seu espaço sustentável'],
+        map: ['PONTOS DE COLETA', 'Encontre um ponto'],
+        report: ['NOVO RELATO', 'Reportar descarte'],
+        impact: ['MEU IMPACTO', 'Seu impacto verde']
+      };
+      const recentActivity = () => `
+        <div class="activity-item"><span class="activity-icon">${icon('recycle')}</span><span class="activity-text"><strong>Materiais recicláveis separados</strong><small>Exemplo de atividade · hoje</small></span><span class="status">Concluído</span></div>
+        <div class="activity-item"><span class="activity-icon">${icon('pin')}</span><span class="activity-text"><strong>Visita a ponto de coleta</strong><small>Exemplo de atividade · esta semana</small></span><span class="status">Registrado</span></div>
+        ${state.reports ? `<div class="activity-item"><span class="activity-icon">${icon('alert')}</span><span class="activity-text"><strong>${state.reports} relato(s) criado(s) nesta sessão</strong><small>Simulação local</small></span><span class="status">Novo</span></div>` : ''}`;
+      const homeView = () => `
+        <div class="mobile-greeting"><div class="overline">SEU RESUMO AMBIENTAL</div><h3>Pequenas ações, grande impacto.</h3><p>Um jeito simples de cuidar do lugar onde vivemos.</p></div>
+        <div class="impact-summary"><div class="impact-summary-top"><span>Materiais reciclados este mês</span><span class="status">+18%</span></div><div class="impact-big"><strong>12,5</strong><small>kg reciclados</small></div><p>Indicadores fictícios para demonstrar o painel.</p><div class="app-mini-stats"><div><span>Pontos de coleta</span><strong>08</strong></div><div><span>Relatos nesta sessão</span><strong>${state.reports}</strong></div></div></div>
+        <div class="quick-action-grid"><button class="quick-action" type="button" data-view="map"><span class="quick-icon">${icon('pin')}</span><span><strong>Encontrar coleta</strong><small>Ver pontos disponíveis</small></span></button><button class="quick-action" type="button" data-view="report"><span class="quick-icon">${icon('alert')}</span><span><strong>Reportar descarte</strong><small>Avisar sobre um local</small></span></button></div>
+        <section class="mobile-card"><div class="panel-head"><h4>Campanha em destaque</h4><span class="status">Exemplo</span></div><div class="campaign-art"><span class="campaign-sun"></span></div><div class="campaign-detail"><h4>Mutirão pela lagoa</h4><p>Uma ação comunitária para recolher resíduos e conscientizar moradores.</p><div class="progress-track"><span></span></div><div class="progress-label"><span>Mobilização ilustrativa</span><strong>68%</strong></div></div><button class="text-link" style="margin-top:10px" type="button" data-toast="Campanhas reais dependem de organização e parceiros locais.">Saiba como participar →</button></section>
+        <section class="mobile-card"><div class="panel-head"><h4>Atividade recente</h4><button class="text-link" type="button" data-view="impact">Ver tudo →</button></div><div class="activity-list">${recentActivity()}</div></section>`;
+      const mapView = () => {
+        const points = [
+          {type:'plastico', name:'Ponto Comunitário Central', meta:'Embalagens e plásticos limpos', pos:'p1'},
+          {type:'papel', name:'Coleta Parceira — Praça', meta:'Papel e papelão secos', pos:'p2'},
+          {type:'vidro', name:'Ponto de Entrega Verde', meta:'Garrafas e frascos de vidro', pos:'p3'}
+        ].filter(p => state.mapFilter === 'todos' || p.type === state.mapFilter);
+        const cards = points.map(p => `<article class="point-card"><strong>${p.name}</strong><p>${p.meta}</p><span class="point-type">${p.type}</span></article>`).join('');
+        const pinClass = (pos, type) => (state.mapFilter === 'todos' || state.mapFilter === type) ? `map-pin ${pos}` : `map-pin ${pos}`;
+        return `<div class="welcome-row"><div><h3>Pontos de entrega ilustrativos</h3><p>Filtre por tipo de material para explorar a experiência.</p></div><button class="small-btn" type="button" data-view="report">${icon('plus')} Reportar descarte</button></div>
+          <div class="map-toolbar" role="group" aria-label="Filtrar pontos de coleta">${[['todos','Todos'],['plastico','Plástico'],['papel','Papel'],['vidro','Vidro']].map(([v,l])=>`<button type="button" class="filter-chip" data-filter="${v}" aria-pressed="${state.mapFilter===v}">${l}</button>`).join('')}</div>
+          <div class="map-layout"><div class="mini-map" aria-label="Mapa ilustrativo com pontos de coleta"><svg viewBox="0 0 420 310" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 70 C55 20 95 120 155 83 S250 26 320 80 S405 150 450 117 L450 170 C365 205 320 120 252 153 S95 225 -20 170Z" fill="#c4dfb8"/><path d="M-20 248 C80 208 108 280 185 227 S322 206 450 265" fill="none" stroke="#d1cda5" stroke-width="18"/><path d="M-10 115 C65 143 90 45 175 108 S290 218 435 66" fill="none" stroke="#fffdf6" stroke-width="9"/><path d="M95 -20 C125 80 65 135 130 210 S175 270 170 330" fill="none" stroke="#fffdf6" stroke-width="8"/><path d="M290 -10 C265 77 350 120 285 175 S250 260 300 325" fill="none" stroke="#fffdf6" stroke-width="8"/><path d="M0 30 420 290M20 290 400 30" stroke="#d5e2cc" stroke-width="1.5" stroke-dasharray="4 5"/></svg><span class="map-label one">Centro comunitário</span><span class="map-label two">Área verde</span>${(state.mapFilter==='todos'||state.mapFilter==='plastico')?`<span class="map-pin p1">${icon('pin')}</span>`:''}${(state.mapFilter==='todos'||state.mapFilter==='papel')?`<span class="map-pin p2">${icon('pin')}</span>`:''}${(state.mapFilter==='todos'||state.mapFilter==='vidro')?`<span class="map-pin p3">${icon('pin')}</span>`:''}</div><div class="point-list">${cards || '<p class="muted">Nenhum ponto nessa categoria na demonstração.</p>'}<button class="small-btn" type="button" data-toast="O mapa é ilustrativo. Pontos reais precisam ser cadastrados pela equipe do projeto.">Sobre os locais</button></div></div>`;
+      };
+      const reportView = () => `<div class="panel" style="max-width:720px;margin:0 auto"><div class="welcome-row"><div><h3>Registrar um ponto de descarte</h3><p>Preencha os detalhes para simular o envio de um relato.</p></div><span class="status">Protótipo</span></div><form id="report-form"><div class="form-grid"><div class="field"><label for="report-type">Tipo de ocorrência</label><select id="report-type" name="type" required><option value="">Selecione</option><option>Descarte irregular</option><option>Contêiner cheio</option><option>Material reciclável sem coleta</option><option>Outro</option></select></div><div class="field"><label for="report-area">Local aproximado</label><select id="report-area" name="area" required><option value="">Selecione uma área</option><option>Centro</option><option>Margem da lagoa</option><option>Praça / área pública</option><option>Outro local</option></select></div><div class="field full"><label for="report-description">Descrição</label><textarea id="report-description" name="description" required placeholder="Descreva o que observou (exemplo fictício)..."></textarea></div><div class="field full"><button class="small-btn" type="submit">${icon('check')} Simular envio do relato</button></div></div><p class="form-note">Não envie informações pessoais. Este formulário não transmite dados nem acessa sua localização.</p></form><div class="report-success" id="report-success" role="status">${icon('check')}<strong>Relato criado na demonstração!</strong><p>Nenhuma equipe foi notificada. O contador local foi atualizado para mostrar como o fluxo funcionaria.</p><button class="small-btn" style="margin-top:14px" type="button" data-view="impact">Ver painel de impacto</button></div></div>`;
+      const impactView = () => `<div class="mobile-greeting"><div class="overline">SEU IMPACTO</div><h3>Cada atitude faz diferença.</h3><p>Veja como os resultados poderiam aparecer no app.</p></div><div class="impact-top"><div class="impact-hero-card"><div class="stat-label">Materiais reciclados no mês ${icon('leaf')}</div><div class="stat-value">12,5 kg</div><div class="stat-note">Indicador ilustrativo</div><div style="margin-top:16px;font-size:9px;color:rgba(255,255,255,.63)">${state.reports} relato(s) simulado(s) nesta sessão</div></div><section class="panel"><div class="panel-head"><h4>Materiais por categoria</h4><span class="status">Exemplo</span></div><div class="impact-bars"><div class="bar-row"><span>Papel</span><div class="bar-track"><span style="width:34%"></span></div><strong>4,2 kg</strong></div><div class="bar-row"><span>Plástico</span><div class="bar-track"><span style="width:41%;background:#d0a646"></span></div><strong>5,1 kg</strong></div><div class="bar-row"><span>Vidro</span><div class="bar-track"><span style="width:25%;background:#6caea0"></span></div><strong>3,2 kg</strong></div></div></section></div><section class="panel"><div class="panel-head"><h4>Histórico da atividade</h4><span class="status">Dados de exemplo</span></div><div class="activity-list">${recentActivity()}</div><button class="small-btn" style="width:100%;margin-top:14px" type="button" data-view="report">${icon('plus')} Criar novo relato</button></section>`;
+      function renderView(view) {
+        state.view = view;
+        const data = titles[view] || titles.home;
+        $('#app-breadcrumb-current').textContent = data[0];
+        $('#app-page-title').textContent = data[1];
+        $$('.app-nav-btn', $('#app-demo')).forEach(btn => { if (btn.dataset.view === view) btn.setAttribute('aria-current','page'); else btn.removeAttribute('aria-current'); });
+        content.classList.remove('screen-enter');
+        content.innerHTML = ({home:homeView,map:mapView,report:reportView,impact:impactView}[view] || homeView)();
+        content.scrollTop = 0;
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(() => content.classList.add('screen-enter'));
+      }
+      let toastTimeout;
+      function showToast(message) {
+        $('#toast-message').textContent = message;
+        $('#toast').classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => $('#toast').classList.remove('show'), 3200);
+      }
+      $('#app-demo').addEventListener('click', (event) => {
+        const viewBtn = event.target.closest('[data-view]');
+        if (viewBtn) { renderView(viewBtn.dataset.view); return; }
+        const filter = event.target.closest('[data-filter]');
+        if (filter) { state.mapFilter = filter.dataset.filter; renderView('map'); return; }
+        const toast = event.target.closest('[data-toast]');
+        if (toast) showToast(toast.dataset.toast);
+      });
+      $('#app-demo').addEventListener('submit', (event) => {
+        if (event.target.id !== 'report-form') return;
+        event.preventDefault();
+        const form = event.target;
+        if (!form.reportValidity()) return;
+        state.reports += 1;
+        const success = $('#report-success');
+        success.classList.add('show');
+        form.style.display = 'none';
+        showToast('Relato simulado criado. Nenhum dado foi enviado.');
+      });
+      $('#contact-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!event.target.reportValidity()) return;
+        $('#contact-success').classList.add('show');
+        event.target.reset();
+      });
+      const toggle = $('#menu-toggle');
+      const nav = $('#nav-links');
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      });
+      $$('#nav-links a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Abrir menu');
+      }));
+      // Motion system: scroll reveals and staggered cards, with a no-motion fallback.
+      const motionTargets = [
+        ...$$('.hero-copy > *, .hero-visual, .trust-item, .split-heading, .section-heading, .demo-top, .app-device, .app-showcase-copy, .demo-disclaimer, .impact-band-grid > div, .contact-copy, .contact-form, .footer-row'),
+        ...$$('.problem-card, .solution-card, .step-card, .business-card, .impact-item')
+      ];
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('motion-enabled');
+        motionTargets.forEach((el, index) => {
+          el.classList.add('motion-reveal');
+          el.style.setProperty('--reveal-delay', `${(index % 4) * 65}ms`);
+        });
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+        motionTargets.forEach(el => revealObserver.observe(el));
+      }
+      renderView('home');
+    })();
+  </script>
+</body>
+</html>
